@@ -1,3 +1,11 @@
-import concatArrays from './5-spread-operator.js';
+import createEmployeesObject from './11-createEmployeesObject.js';
+import createReportObject from './12-createReportObject.js';
 
-console.log(concatArrays(['a', 'b'], ['c', 'd'], 'Hello'));
+const employees = {
+    ...createEmployeesObject('engineering', ['Bob', 'Jane']),
+    ...createEmployeesObject('marketing', ['Sylvie'])
+};      
+
+const report = createReportObject(employees);
+console.log(report.allEmployees);
+console.log(report.getNumberOfDepartments(report.allEmployees));
