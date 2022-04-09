@@ -33,10 +33,12 @@ export default class HolbertonCourse {
   }
 
   set students(value) {
-    if (typeof value !== 'number') {
+    if (!Array.isArray(value)) {
       throw new TypeError('students must be a number');
-    } else {
-      this._students = value;
     }
+    if (value.some((v) => typeof v !== 'string')) {
+      throw new TypeError('name must be a string');
+    }
+    this._students = value;
   }
 }
