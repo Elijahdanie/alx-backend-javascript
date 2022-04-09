@@ -1,3 +1,3 @@
-import handleProfileSignup from './6-final-user';
+import handleProfileSignup from "./3-all";
 
-console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));
+handleProfileSignup();
