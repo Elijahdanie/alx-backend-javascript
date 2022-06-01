@@ -20,15 +20,15 @@ function countStudents(path) {
       if (key !== 'field') {
         fields[key] = fields[key] !== undefined ? fields[key] + 1 : 1;
         if (students[key] !== undefined) {
-          students[key] += (`${data[0]}, `);
+          students[key].push(data[0]);
         } else {
-          students[key] = `${data[0]}, `;
+          students[key] = [data[0]];
         }
       }
     }
   });
   Object.keys(fields).forEach((x) => {
-    console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].slice(0, -2)}`);
+    console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].join(',')}`);
   });
 }
 
