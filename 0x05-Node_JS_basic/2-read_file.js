@@ -16,12 +16,14 @@ function countStudents(path) {
   parsed.forEach((x) => {
     const data = x.split(',');
     const key = data[3];
-    if (key !== 'field') {
-      fields[key] = fields[key] !== undefined ? fields[key] + 1 : 1;
-      if (students[key] !== undefined) {
-        students[key] += (`${data[0]}, `);
-      } else {
-        students[key] = `${data[0]}, `;
+    if (key !== undefined) {
+      if (key !== 'field') {
+        fields[key] = fields[key] !== undefined ? fields[key] + 1 : 1;
+        if (students[key] !== undefined) {
+          students[key] += (`${data[0]}, `);
+        } else {
+          students[key] = `${data[0]}, `;
+        }
       }
     }
   });
