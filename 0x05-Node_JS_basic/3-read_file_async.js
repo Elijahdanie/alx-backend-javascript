@@ -23,10 +23,13 @@ function countStudents(path) {
             }
           }
         });
+        const final = [];
         Object.keys(fields).forEach((x) => {
-          console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].slice(0, -2)}`);
+          const strVal = `Number of students in ${x}: ${fields[x]}. List: ${students[x].slice(0, -2)}`;
+          final.push(strVal);
+          console.log(strVal);
         });
-        resolve();
+        resolve(final);
       }
     });
   });
