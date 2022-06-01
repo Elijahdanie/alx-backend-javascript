@@ -15,8 +15,7 @@ function countStudents(path) {
   const students = {};
   parsed.forEach((x) => {
     const data = x.split(',');
-    const arr = data[3].split('\r');
-    const [key] = arr;
+    const key = data[3];
     if (key !== 'field') {
       fields[key] = fields[key] !== undefined ? fields[key] + 1 : 1;
       if (students[key] !== undefined) {
