@@ -29,7 +29,7 @@ function countStudents(path) {
     }
   });
   Object.keys(fields).forEach((x) => {
-    console.log(`Number of students in CS: ${fields[x]}. List: ${students[x].join(', ')}`);
+    console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`);
   });
 }
 
