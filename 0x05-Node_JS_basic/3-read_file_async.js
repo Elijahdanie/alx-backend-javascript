@@ -28,15 +28,12 @@ function countStudents(path) {
         Object.keys(fields).forEach((x) => {
           number += parseFloat(fields[x]);
         });
-        const final = [];
-        final.push(`Number of students: ${number}`);
         console.log(`Number of students: ${number}`);
         Object.keys(fields).forEach((x) => {
           const strVal = `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`;
-          final.push(strVal);
           console.log(strVal);
         });
-        resolve(final);
+        resolve();
       }
     });
   });
