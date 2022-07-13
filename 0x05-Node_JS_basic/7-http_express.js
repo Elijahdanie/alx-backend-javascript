@@ -6,7 +6,8 @@ const app = express();
 const dbName = process.argv[2];
 
 app.get('/', (req, res) => {
-  res.end('Hello Holberton School!');
+  res.statusCode = 200;
+  res.send('Hello Holberton School!');
 });
 function countStudents(path) {
   return new Promise((resolve, reject) => {
@@ -41,7 +42,7 @@ function countStudents(path) {
           let tmp = `Number of students: ${number}\n`;
           const len = Object.keys(fields).length;
           Object.keys(fields).forEach((x) => {
-            if (trackend !== len) {
+            if (trackend !== len - 1) {
               tmp += `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}\n`;
             } else {
               tmp += `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`;
@@ -59,14 +60,15 @@ app.get('/students', async (req, res) => {
   try {
     res.write('This is the list of our students');
     const result = await countStudents(dbName);
-    res.status(200).end(result.join('\n'));
+    res.statusCode = 200;
+    res.write(result);
   } catch (error) {
-    res.status(500).end(error);
+    res.statusCode = 500;
+    res.end();
   }
 });
 
 app.listen(1245, 'localhost', () => {
-  console.log('listening');
 });
 
 module.exports = app;

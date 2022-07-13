@@ -66,8 +66,8 @@ const app = http.createServer(async (req, res) => {
         res.write('This is the list of our students\n');
         res.write(result);
       } catch (error) {
-        res.statusCode = 200;
-        res.write(error);
+        res.statusCode = 500;
+        res.end();
       }
       break;
     default:
