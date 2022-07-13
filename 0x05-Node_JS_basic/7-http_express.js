@@ -63,8 +63,8 @@ app.get('/students', async (req, res) => {
     res.statusCode = 200;
     res.write(result);
   } catch (error) {
-    res.statusCode = 500;
-    res.end();
+    res.statusCode = 200;
+    res.end(error.message);
   }
 });
 
