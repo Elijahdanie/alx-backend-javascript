@@ -30,9 +30,11 @@ function countStudents(path) {
   let display = '';
   Object.keys(fields).forEach((x) => {
     number += parseInt(fields[x]);
-    display += `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}\n`;
   });
   console.log(`Number of students: ${number}`);
+    Object.keys(fields).forEach((x) => {
+    console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`);
+  });
   console.log(display);
 }
 
