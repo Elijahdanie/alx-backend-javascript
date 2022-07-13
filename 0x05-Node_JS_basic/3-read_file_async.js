@@ -7,26 +7,26 @@ function countStudents(path) {
         reject(Error('Cannot load the database'));
       } else {
         const parsed = file.toString('utf-8').split('\n');
-        console.log(`Number of students: ${parsed.length - 1}`);
         const fields = {};
         const students = {};
         parsed.forEach((x) => {
-          const data = x.split(',');
-          const key = data[3];
-          if (key !== undefined && data.length === 4) {
-            if (key !== 'field') {
-              fields[key] = fields[key] !== undefined ? fields[key] + 1 : 1;
-              if (students[key] !== undefined) {
-                students[key] += (`${data[0]}, `);
-              } else {
-                students[key] = `${data[0]}, `;
-              }
+          const getsplits = x.replace('\r', '').split(',');
+          if (getsplits.length === 4 && getsplits[0] !== 'firstname') {
+            if (students[getsplits[3]]) {
+              students[getsplits[3]].push(getsplits[0]);
+            } else {
+              students[getsplits[3]] = [getsplits[0]];
+            }
+            if (fields[getsplits[3]]) {
+              fields[getsplits[3]] += 1;
+            } else {
+              fields[getsplits[3]] = 1;
             }
           }
         });
         const final = [];
         Object.keys(fields).forEach((x) => {
-          const strVal = `Number of students in ${x}: ${fields[x]}. List: ${students[x].slice(0, -2)}`;
+          const strVal = `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`;
           final.push(strVal);
           console.log(strVal);
         });
