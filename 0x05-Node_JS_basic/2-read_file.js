@@ -27,12 +27,12 @@ function countStudents(path) {
     }
   });
   let number = 0;
-  let display = '';
+  const display = '';
   Object.keys(fields).forEach((x) => {
-    number += parseInt(fields[x]);
+    number += parseFloat(fields[x]);
   });
   console.log(`Number of students: ${number}`);
-    Object.keys(fields).forEach((x) => {
+  Object.keys(fields).forEach((x) => {
     console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`);
   });
   console.log(display);
