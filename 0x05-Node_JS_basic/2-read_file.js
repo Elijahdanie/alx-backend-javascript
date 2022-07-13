@@ -8,9 +8,7 @@ function countStudents(path) {
     // eslint-disable-next-line no-throw-literal
     throw ('Cannot load the database');
   }
-
   const parsed = file.toString('utf-8').split('\n');
-  console.log(`Number of students: ${parsed.length - 1}`);
   const fields = {};
   const students = {};
   parsed.forEach((x) => {
@@ -28,9 +26,14 @@ function countStudents(path) {
       }
     }
   });
+  let number = 0;
+  let display = '';
   Object.keys(fields).forEach((x) => {
-    console.log(`Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}`);
+    number += parseInt(fields[x]);
+    display += `Number of students in ${x}: ${fields[x]}. List: ${students[x].join(', ')}\n`;
   });
+  console.log(`Number of students: ${number}`);
+  console.log(display);
 }
 
 module.exports = countStudents;
